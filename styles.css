@@ -537,4 +537,13 @@ html {
         padding: 0.5rem 0.3rem;
         font-size: 0.95rem;
     }
-} 
+}
+
+/* Hero Flex Layout */
+/*（以下 .hero-flex、.hero-image、.hero-image img 及 @media (max-width: 900px) 相關區塊全部移除）*/
+
+/* 新版 Hero 區塊現代橘色主題 */
+/* 以下 .hero-grid、.hero-left、.hero-center、.hero-right、.hero-avatar-bg、.hero-avatar、.hero-title、.highlight、.hero-subtitle、.hero-actions、.hero-quote、.quote-icon、.hero-review、.review-stars、.review-score、.review-count、.hero-tags、.tag、.hero-social 及其 media query 相關區塊全部移除 */
+
+/* 新版 Hero 區塊現代橘色主題 */
+/* 以下 .hero-grid、.hero-left、.hero-center、.hero-right、.hero-avatar-bg、.hero-avatar、.hero-title、.highlight、.hero-subtitle、.hero-actions、.hero-quote、.quote-icon、.hero-review、.review-stars、.review-score、.review-count、.hero-tags、.tag、.hero-social 及其 media query 相關區塊全部移除 */ 
