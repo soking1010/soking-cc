@@ -9,16 +9,7 @@
 <body>
     <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">Soking</div>
-            <ul class="nav-links">
-                <li><a href="event-schedule.html">開課計劃表</a></li>
-                <li><a href="#training">企業內訓</a></li>
-                <li><a href="#transform">數位轉型輔導</a></li>
-                <li><a href="#consult">一人公司商業顧問</a></li>
-                <li><a href="https://lms.soking.cc" target="_blank">Soking 線上課</a></li>
-            </ul>
-        </nav>
+        <!-- Header content will be loaded dynamically -->
     </header>
 
     <!-- Hero Section -->
@@ -164,5 +155,31 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Ensure header loads even if main script fails
+        setTimeout(function() {
+            const header = document.querySelector('header');
+            if (header && !header.querySelector('nav')) {
+                console.log('Fallback: Loading header content directly');
+                header.innerHTML = `
+                    <nav class="container">
+                        <div class="logo">Soking</div>
+                        <ul class="nav-links">
+                            <li><a href="event-schedule.html" id="nav-schedule">開課計劃表</a></li>
+                            <li><a href="#training">企業內訓</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">UX 顧問服務</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#transform">數位轉型輔導</a></li>
+                                    <li><a href="#consult">一人公司商業顧問</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="https://lms.soking.cc" target="_blank">Soking 線上課</a></li>
+                        </ul>
+                    </nav>
+                `;
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
