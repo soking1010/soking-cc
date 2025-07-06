@@ -17,14 +17,33 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>UX 講師：王彥博 / Soking</h2>
-                    <p>Soking 是一位資深軟體產品經理，也是一位 UX 講師。曾在跨國影音平台、新創公司、網路媒體等數位產品領域工作超過十五年，擁有豐富的數位產品開發與營運的經驗。</p>
+                    <p>Soking 是一位近二十年豐富經驗的 UX 顧問，也是一位 UX 講師。他過去是資深軟體產品經理，曾在跨國影音平台、新創公司、網路媒體等數位產品領域工作，擁有豐富的數位產品開發與營運的經驗，包括多次從０到１打造新創產品，以及進行產品營運的增長。</p>
                     <p>Soking 擅長以 UX 設計工作坊帶領學員實際操作，協助學員更深入的了解 UX 設計。線上課程《產品分析入門：UX 設計師的思考術》在 Hahow 線上課程平台上受到了廣泛的好評，已有超過千人購買，平均評價為 4.7 星。</p>
                 </div>
+            </div>
+            <div class="about-tags">
+                <span class="tag">UX 用戶體驗設計</span>
+                <span class="tag">數位轉型</span>
+                <span class="tag">軟體產品設計</span>
+                <span class="tag">設計思考</span>
+                <span class="tag">市場用戶需求研究</span>
+                <span class="tag">資訊架構</span>
+                <span class="tag">專案需求訪談</span>
             </div>
         </section>
         <section>
             <h2 class="section-title">企業內訓案例</h2>
             <div class="services-grid">
+                <div class="service-card">
+                    <img src="img/ppa.jpg" alt="Press Play Academy" style="width:100%;border-radius:8px;">
+                    <h3>Press Play Academy / 線上學習</h3>
+                    <p>一日用戶訪談工作坊，練習如何洞察使用者需求的訪談技巧</p>
+                </div>
+                <div class="service-card">
+                    <img src="img/National_Taichung_Theater.png" alt="臺中國家歌劇院" style="width:100%;border-radius:8px;">
+                    <h3>臺中國家歌劇院 / 藝術表演</h3>
+                    <p>學習服務設計與顧客滿意度分析，增進服務流程品質</p>
+                </div>
                 <div class="service-card">
                     <img src="img/esun-bank.jpg" alt="玉山銀行 UXD" style="width:100%;border-radius:8px;">
                     <h3>玉山銀行 / 金融業</h3>
@@ -86,63 +105,6 @@
     <footer id="contact">
         <!-- Footer content will be loaded dynamically -->
     </footer>
-    <script>
-        // Ensure header and footer load even if main script fails
-        setTimeout(function() {
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            
-            if (header && !header.querySelector('nav')) {
-                console.log('Fallback: Loading header content directly');
-                header.innerHTML = `
-                    <nav class="container">
-                        <div class="logo">Soking</div>
-                        <ul class="nav-links">
-                            <li><a href="event-schedule.html" id="nav-schedule">開課計劃表</a></li>
-                            <li><a href="#training">企業內訓</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle">UX 顧問服務</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#transform">數位轉型輔導</a></li>
-                                    <li><a href="#consult">一人公司商業顧問</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="https://lms.soking.cc" target="_blank">Soking 線上課</a></li>
-                        </ul>
-                    </nav>
-                `;
-            }
-            
-            if (footer && !footer.querySelector('.footer-content')) {
-                console.log('Fallback: Loading footer content directly');
-                footer.innerHTML = `
-                    <div class="container">
-                        <div class="footer-content">
-                            <div class="footer-section">
-                                <h3>聯絡合作</h3>
-                                <a href="#">👉 預約顧問線上諮詢</a>
-                                <a href="https://subscribe.soking.cc/new-sokingcc" target="_blank">👉 訂閱免費電子報</a>
-                                <a href="event-schedule.html" target="_blank">👉 查看近期開課計劃表</a>
-                            </div>
-                            <div class="footer-section">
-                                <h3>聯絡資訊</h3>
-                                <p>聯絡信箱：service@soking.cc</p>
-                                <a href="https://www.facebook.com/sokingwang/" target="_blank">臉書：王彥博／Soking</a>
-                            </div>
-                            <div class="footer-section">
-                                <h3>網站資訊</h3>
-                                <a href="#">千綺創意設計股份有限公司</a>
-                                <a href="#">統一編號：90766379</a>
-                            </div>
-                        </div>
-                        <div class="footer-bottom">
-                            <p>&copy; 2025 Soking. All rights reserved.<br>此網站由 Soking 進行 Vibe Coding 所製作，所以會常常改來改去很正常。</p>
-                        </div>
-                    </div>
-                `;
-            }
-        }, 1000);
-    </script>
     <script src="script.js"></script>
 </body>
 </html> 

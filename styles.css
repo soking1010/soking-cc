@@ -85,9 +85,10 @@ a.logo {
 }
 
 .nav-links a.active {
-    border-bottom: 2.5px solid #2c3e50;
-    color: #2c3e50;
-    padding-bottom: 2px;
+    border-bottom: 2.5px solid #f7c873;
+    color: #e67e22;
+    font-weight: 600;
+    background: none;
 }
 
 /* Dropdown Menu */
@@ -249,7 +250,8 @@ a.logo {
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-top: 0;
+    margin-bottom: 2.2rem;
     color: #2c3e50;
 }
 
@@ -446,11 +448,20 @@ a.logo {
     background: #fff;
 }
 
+.about-photo {
+    width: 180px;
+    max-width: 40vw;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    margin-right: 2.5rem;
+    background: #fff;
+}
+
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 3rem;
+    display: flex;
     align-items: center;
+    gap: 2.5rem;
+    padding: 0 2.5rem;
 }
 
 .about-text h2 {
@@ -477,6 +488,49 @@ a.logo {
     font-size: 8rem;
     display: block;
     margin-bottom: 1rem;
+}
+
+.about-tags {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+}
+.tag {
+    display: inline-block;
+    background: #f7c873;
+    color: #6d4c00;
+    font-size: 1rem;
+    padding: 0.35em 1.1em;
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 8px rgba(247,200,115,0.08);
+    transition: background 0.2s;
+}
+.tag:hover {
+    background: #ffe1a8;
+}
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .about-photo {
+        margin-right: 0;
+        margin-bottom: 1.2rem;
+        width: 50vw;
+        max-width: 220px;
+    }
+    .about-tags {
+        justify-content: center;
+    }
+    .tag {
+        font-size: 0.98rem;
+        padding: 0.32em 1em;
+    }
 }
 
 /* Footer */
@@ -613,4 +667,12 @@ html {
 /* 以下 .hero-grid、.hero-left、.hero-center、.hero-right、.hero-avatar-bg、.hero-avatar、.hero-title、.highlight、.hero-subtitle、.hero-actions、.hero-quote、.quote-icon、.hero-review、.review-stars、.review-score、.review-count、.hero-tags、.tag、.hero-social 及其 media query 相關區塊全部移除 */
 
 /* 新版 Hero 區塊現代橘色主題 */
-/* 以下 .hero-grid、.hero-left、.hero-center、.hero-right、.hero-avatar-bg、.hero-avatar、.hero-title、.highlight、.hero-subtitle、.hero-actions、.hero-quote、.quote-icon、.hero-review、.review-stars、.review-score、.review-count、.hero-tags、.tag、.hero-social 及其 media query 相關區塊全部移除 */ 
+/* 以下 .hero-grid、.hero-left、.hero-center、.hero-right、.hero-avatar-bg、.hero-avatar、.hero-title、.highlight、.hero-subtitle、.hero-actions、.hero-quote、.quote-icon、.hero-review、.review-stars、.review-score、.review-count、.hero-tags、.tag、.hero-social 及其 media query 相關區塊全部移除 */
+
+section {
+    margin-bottom: 3.5rem;
+}
+.section-title {
+    margin-top: 0;
+    margin-bottom: 2.2rem;
+} 
