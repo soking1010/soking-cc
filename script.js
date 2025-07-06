@@ -2,7 +2,8 @@
 async function loadHeader() {
     try {
         console.log('Loading header...');
-        const response = await fetch('header.html');
+        // Add cache busting parameter
+        const response = await fetch('header.html?t=' + Date.now());
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,8 +44,13 @@ async function loadHeader() {
                 <ul class="nav-links">
                     <li><a href="event-schedule.html" id="nav-schedule">開課計劃表</a></li>
                     <li><a href="#training">企業內訓</a></li>
-                    <li><a href="#transform">數位轉型輔導</a></li>
-                    <li><a href="#consult">一人公司商業顧問</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">UX 顧問服務</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#transform">數位轉型輔導</a></li>
+                            <li><a href="#consult">一人公司商業顧問</a></li>
+                        </ul>
+                    </li>
                     <li><a href="https://lms.soking.cc" target="_blank">Soking 線上課</a></li>
                 </ul>
             </nav>
@@ -75,19 +81,85 @@ function attachEventListeners() {
     });
 }
 
-// Load header when DOM is ready
+// Load shared footer
+async function loadFooter() {
+    try {
+        console.log('Loading footer...');
+        // Add cache busting parameter
+        const response = await fetch('footer.html?t=' + Date.now());
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const footerContent = await response.text();
+        console.log('Footer content loaded:', footerContent);
+        
+        // Find the footer element and replace its content
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.innerHTML = footerContent;
+            console.log('Footer updated successfully');
+        } else {
+            console.error('Footer element not found');
+        }
+    } catch (error) {
+        console.error('Error loading footer:', error);
+        // Fallback: load footer content directly
+        const fallbackFooter = `
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>聯絡合作</h3>
+                        <a href="#">👉 預約顧問線上諮詢</a>
+                        <a href="https://subscribe.soking.cc/new-sokingcc" target="_blank">👉 訂閱免費電子報</a>
+                        <a href="event-schedule.html" target="_blank">👉 查看近期開課計劃表</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>聯絡資訊</h3>
+                        <p>聯絡信箱：service@soking.cc</p>
+                        <a href="https://www.facebook.com/sokingwang/" target="_blank">臉書：王彥博／Soking</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>網站資訊</h3>
+                        <a href="#">千綺創意設計股份有限公司</a>
+                        <a href="#">統一編號：90766379</a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Soking. All rights reserved.<br>此網站由 Soking 進行 Vibe Coding 所製作，所以會常常改來改去很正常。</p>
+                </div>
+            </div>
+        `;
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.innerHTML = fallbackFooter;
+            console.log('Using fallback footer');
+        }
+    }
+}
+
+// Load header and footer when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, loading header...');
+    console.log('DOM loaded, loading header and footer...');
     loadHeader();
+    loadFooter();
 });
 
 // Also try loading on window load as backup
 window.addEventListener('load', function() {
-    console.log('Window loaded, checking if header is loaded...');
+    console.log('Window loaded, checking if header and footer are loaded...');
     const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    
     if (header && !header.querySelector('nav')) {
         console.log('Header not loaded yet, trying again...');
         loadHeader();
+    }
+    
+    if (footer && !footer.querySelector('.footer-content')) {
+        console.log('Footer not loaded yet, trying again...');
+        loadFooter();
     }
 });
 

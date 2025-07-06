@@ -1,0 +1,26 @@
+.blog-row {
+    display: block;
+}
+
+#index-blog .blog-row {
+    display: flex;
+}
+
+.course-block .middle-title {
+    line-height: 1.5;
+}
+.middle-title {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    .aside-content {
+        margin: 0;
+    }
+    .blog-row .img-fluid {
+        width: 100%;
+    }
+    .middle-title {
+        margin-top:1rem;
+    }
+}
