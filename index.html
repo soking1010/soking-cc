@@ -34,17 +34,17 @@
                 <div class="service-card">
                     <h3>◾ UX 專業教學</h3>
                     <p>給產品經理、設計師、UX 研究員的進修課程，學會從使用者思維出發，提升設計與團隊協作的決策品質。</p>
-                    <a href="#" class="service-link">👉 深入了解</a>
+                    <a href="event-schedule.html" class="service-link">👉 開課計劃表</a>
                 </div>
                 <div class="service-card">
                     <h3>◾ 數位轉型與企業顧問</h3>
                     <p>協助新創團隊與技術公司，釐清商業策略，打造可落地的數位解決方案。從需求釐清到流程規劃，陪你走過產品從 0 到 1 的實戰歷程。</p>
-                    <a href="#" class="service-link">👉 深入了解</a>
+                    <a href="#" class="service-link">🚧 尚未開放</a>
                 </div>
                 <div class="service-card">
                     <h3>◾ 一人公司商業顧問</h3>
                     <p>專為個人品牌經營者、自雇者設計的顧問服務，以服務設計視角，找出定位、打磨產品、建立持續被看見的商業模型。</p>
-                    <a href="#" class="service-link">👉 深入了解</a>
+                    <a href="#" class="service-link">🚧 尚未開放</a>
                 </div>
             </div>
         </div>
@@ -133,62 +133,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Ensure header and footer load even if main script fails
-        setTimeout(function() {
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            
-            if (header && !header.querySelector('nav')) {
-                console.log('Fallback: Loading header content directly');
-                header.innerHTML = `
-                    <nav class="container">
-                        <div class="logo">Soking</div>
-                        <ul class="nav-links">
-                            <li><a href="event-schedule.html" id="nav-schedule">開課計劃表</a></li>
-                            <li><a href="#training">企業內訓</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle">UX 顧問服務</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#transform">數位轉型輔導</a></li>
-                                    <li><a href="#consult">一人公司商業顧問</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="https://lms.soking.cc" target="_blank">Soking 線上課</a></li>
-                        </ul>
-                    </nav>
-                `;
-            }
-            
-            if (footer && !footer.querySelector('.footer-content')) {
-                console.log('Fallback: Loading footer content directly');
-                footer.innerHTML = `
-                    <div class="container">
-                        <div class="footer-content">
-                            <div class="footer-section">
-                                <h3>聯絡合作</h3>
-                                <a href="#">👉 預約顧問線上諮詢</a>
-                                <a href="https://subscribe.soking.cc/new-sokingcc" target="_blank">👉 訂閱免費電子報</a>
-                                <a href="event-schedule.html" target="_blank">👉 查看近期開課計劃表</a>
-                            </div>
-                            <div class="footer-section">
-                                <h3>聯絡資訊</h3>
-                                <p>聯絡信箱：service@soking.cc</p>
-                                <a href="https://www.facebook.com/sokingwang/" target="_blank">臉書：王彥博／Soking</a>
-                            </div>
-                            <div class="footer-section">
-                                <h3>網站資訊</h3>
-                                <a href="#">千綺創意設計股份有限公司</a>
-                                <a href="#">統一編號：90766379</a>
-                            </div>
-                        </div>
-                        <div class="footer-bottom">
-                            <p>&copy; 2025 Soking. All rights reserved.<br>此網站由 Soking 進行 Vibe Coding 所製作，所以會常常改來改去很正常。</p>
-                        </div>
-                    </div>
-                `;
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
