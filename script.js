@@ -67,6 +67,22 @@ function attachEventListeners() {
             }
         });
     });
+    // === 漢堡選單功能 ===
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        });
+        // 點擊選單連結後自動收合（行動裝置體驗）
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
 }
 
 // Load shared footer
