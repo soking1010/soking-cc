@@ -728,6 +728,64 @@ section {
     nav.container {
         position: relative;
     }
+    
+    /* 手機版 dropdown 手風琴效果 */
+    .dropdown {
+        width: 100%;
+    }
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        background: none;
+        border: none;
+        color: #2c3e50;
+        font-weight: 500;
+        font-size: inherit;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    /* 移除 ::after 偽元素箭頭，改用 JavaScript 動態添加 */
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .dropdown.active .dropdown-toggle::after {
+        display: none;
+    }
+    .dropdown-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        min-width: auto;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        list-style: none;
+    }
+    .dropdown.active .dropdown-menu {
+        max-height: 200px;
+        padding: 0.5rem 0 0 1rem;
+    }
+    .dropdown-menu a {
+        padding: 0.5rem 0;
+        border-bottom: none;
+        color: #666;
+        font-size: 0.95rem;
+    }
+    .dropdown-menu a:hover {
+        background: none;
+        color: #3498db;
+        transform: none;
+    }
 }
 
 /* 漢堡展開動畫 */

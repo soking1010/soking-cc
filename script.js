@@ -39,6 +39,9 @@ async function loadHeader() {
             
             // Re-attach event listeners after header is loaded
             attachEventListeners();
+            
+            // 添加手機版選單箭頭
+            addMobileDropdownArrows();
         } else {
             console.error('Header element not found');
         }
@@ -75,14 +78,72 @@ function attachEventListeners() {
             navLinks.classList.toggle('open');
             hamburger.classList.toggle('active');
         });
+        
+        // 手機版 dropdown 手風琴效果
+        const dropdownToggles = navLinks.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = this.closest('.dropdown');
+                dropdown.classList.toggle('active');
+                
+                // 旋轉動態箭頭
+                const mobileArrow = this.querySelector('.mobile-arrow');
+                if (mobileArrow) {
+                    if (dropdown.classList.contains('active')) {
+                        mobileArrow.style.transform = 'rotate(180deg)';
+                    } else {
+                        mobileArrow.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+        
         // 點擊選單連結後自動收合（行動裝置體驗）
-        navLinks.querySelectorAll('a').forEach(link => {
+        navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('open');
                 hamburger.classList.remove('active');
+                // 重置所有 dropdown 狀態
+                navLinks.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                    // 重置動態箭頭
+                    const mobileArrow = dropdown.querySelector('.mobile-arrow');
+                    if (mobileArrow) {
+                        mobileArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
             });
         });
     }
+}
+
+// === 手機版選單箭頭偵測功能 ===
+function addMobileDropdownArrows() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+        
+        // 檢查是否有第二層選單
+        if (dropdownMenu && dropdownMenu.children.length > 0) {
+            // 如果沒有箭頭，就添加箭頭
+            if (!dropdownToggle.querySelector('.mobile-arrow')) {
+                const arrow = document.createElement('span');
+                arrow.className = 'mobile-arrow';
+                arrow.textContent = '▼';
+                arrow.style.cssText = `
+                    margin-left: 8px;
+                    font-size: 0.8em;
+                    transition: transform 0.3s ease;
+                    display: inline-block;
+                    flex-shrink: 0;
+                `;
+                dropdownToggle.appendChild(arrow);
+            }
+        }
+    });
 }
 
 // Load shared footer
