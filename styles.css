@@ -746,13 +746,14 @@ section {
         font-size: inherit;
         cursor: pointer;
         text-decoration: none;
+        position: relative;
     }
-    /* 移除 ::after 偽元素箭頭，改用 JavaScript 動態添加 */
+    /* 手機版隱藏 CSS 偽元素箭頭，改用 JavaScript 動態箭頭 */
     .dropdown-toggle::after {
-        display: none;
+        content: none !important;
     }
     .dropdown.active .dropdown-toggle::after {
-        display: none;
+        content: none !important;
     }
     .dropdown-menu {
         position: static;

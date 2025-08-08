@@ -40,8 +40,10 @@ async function loadHeader() {
             // Re-attach event listeners after header is loaded
             attachEventListeners();
             
-            // 添加手機版選單箭頭
-            addMobileDropdownArrows();
+            // 延遲添加手機版選單箭頭，確保 DOM 完全載入
+            setTimeout(() => {
+                addMobileDropdownArrows();
+            }, 100);
         } else {
             console.error('Header element not found');
         }
@@ -121,27 +123,46 @@ function attachEventListeners() {
 
 // === 手機版選單箭頭偵測功能 ===
 function addMobileDropdownArrows() {
+    console.log('addMobileDropdownArrows called, window width:', window.innerWidth);
+    
+    // 先移除所有現有的動態箭頭
+    document.querySelectorAll('.mobile-arrow').forEach(arrow => arrow.remove());
+    
+    // 只在手機版（寬度小於 820px）顯示動態箭頭
+    if (window.innerWidth > 820) {
+        console.log('Desktop mode, skipping mobile arrows');
+        return; // 桌面版不添加動態箭頭，使用 CSS 偽元素
+    }
+    
+    console.log('Mobile mode, adding arrows...');
     const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
+    console.log('Found dropdowns:', dropdowns.length);
+    
+    dropdowns.forEach((dropdown, index) => {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
         
+        console.log(`Dropdown ${index}:`, {
+            hasMenu: !!dropdownMenu,
+            menuChildren: dropdownMenu ? dropdownMenu.children.length : 0,
+            hasToggle: !!dropdownToggle
+        });
+        
         // 檢查是否有第二層選單
         if (dropdownMenu && dropdownMenu.children.length > 0) {
-            // 如果沒有箭頭，就添加箭頭
-            if (!dropdownToggle.querySelector('.mobile-arrow')) {
-                const arrow = document.createElement('span');
-                arrow.className = 'mobile-arrow';
-                arrow.textContent = '▼';
-                arrow.style.cssText = `
-                    margin-left: 8px;
-                    font-size: 0.8em;
-                    transition: transform 0.3s ease;
-                    display: inline-block;
-                    flex-shrink: 0;
-                `;
-                dropdownToggle.appendChild(arrow);
-            }
+            // 添加動態箭頭
+            const arrow = document.createElement('span');
+            arrow.className = 'mobile-arrow';
+            arrow.textContent = '▼';
+            arrow.style.cssText = `
+                margin-left: 8px;
+                font-size: 0.8em;
+                transition: transform 0.3s ease;
+                display: inline-block;
+                flex-shrink: 0;
+            `;
+            dropdownToggle.appendChild(arrow);
+            console.log(`Added arrow to dropdown ${index}`);
         }
     });
 }
@@ -243,4 +264,13 @@ document.querySelectorAll('.service-card, .testimonial').forEach(card => {
     card.style.transform = 'translateY(30px)';
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
+});
+
+// 監聽視窗大小改變，重新處理手機版箭頭
+window.addEventListener('resize', function() {
+    // 延遲執行，避免頻繁觸發
+    clearTimeout(window.resizeTimer);
+    window.resizeTimer = setTimeout(function() {
+        addMobileDropdownArrows();
+    }, 250);
 }); 
