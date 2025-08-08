@@ -36,6 +36,13 @@ async function loadHeader() {
                     console.log('Set active class for training link');
                 }
             }
+            if (currentPage === 'consultation.html') {
+                const consultationLink = document.getElementById('nav-consultation');
+                if (consultationLink) {
+                    consultationLink.classList.add('active');
+                    console.log('Set active class for consultation link');
+                }
+            }
             
             // Re-attach event listeners after header is loaded
             attachEventListeners();
